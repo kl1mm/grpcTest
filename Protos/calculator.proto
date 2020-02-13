@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+option csharp_namespace = "kli.NewService.GRPC";
+
+package calculator;
+
+service Calculator {
+  rpc Calc (CalculationMessage) returns (CalculationResult);
+}
+
+message CalculationMessage {
+  
+  enum Operand {
+      PLUS = 0;
+      MINUS = 1;
+      MULTIPY = 2;
+      DIVIDE = 3;
+  }
+  
+  Operand operand = 1;
+  double lhs = 2;
+  double rhs = 3;
+}
+
+message CalculationResult {
+  double value = 1;
+}
