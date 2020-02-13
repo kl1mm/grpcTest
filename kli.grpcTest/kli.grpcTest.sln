@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29721.120
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "kli.grpcTest", "kli.grpcTest.csproj", "{6AF8B84B-6455-47F3-8189-4CC8569C6688}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6AF8B84B-6455-47F3-8189-4CC8569C6688}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6AF8B84B-6455-47F3-8189-4CC8569C6688}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6AF8B84B-6455-47F3-8189-4CC8569C6688}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6AF8B84B-6455-47F3-8189-4CC8569C6688}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AD566C2E-C410-4532-A881-6BFE9B0AFD90}
+	EndGlobalSection
+EndGlobal
