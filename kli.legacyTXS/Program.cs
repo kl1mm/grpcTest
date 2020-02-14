@@ -7,6 +7,8 @@ namespace kli.legacyTXS
 {
 	static class Program
 	{
+		public const int NEWSERVICE_PORT = 5001;
+
 		/// <summary>
 		/// The main entry point for the application.
 		/// </summary>
@@ -16,13 +18,14 @@ namespace kli.legacyTXS
 			var startInfo = new ProcessStartInfo
 			{
 				FileName = Path.Combine("Services", "kli.NewService.exe"),
-				//Arguments = "3333",
+				Arguments = $"local {NEWSERVICE_PORT}",
 				CreateNoWindow = true,
 				UseShellExecute = false,
 			};
 
-			Process.Start(startInfo);
+			var process = Process.Start(startInfo);
 
+			Application.ApplicationExit += (sender, args) => process.Kill();
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
 			Application.Run(new MainForm());

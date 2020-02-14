@@ -1,7 +1,6 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Server.Kestrel.Core;
 using Microsoft.Extensions.Hosting;
-using System;
 using System.Net;
 
 namespace kli.NewService
@@ -18,15 +17,17 @@ namespace kli.NewService
 			return Host.CreateDefaultBuilder(args)
 				.ConfigureWebHostDefaults(webBuilder =>
 				{
-					webBuilder.ConfigureKestrel(options =>
+					if (args.Length > 0 && args[0] == "local" && int.TryParse(args[1], out var port))
 					{
-						options.Listen(IPAddress.Any, 5001, listenOptions =>
+						webBuilder.ConfigureKestrel(options =>
 						{
-							listenOptions.Protocols = HttpProtocols.Http2;
+							options.Listen(IPAddress.Any, port, listenOptions =>
+							{
+								listenOptions.Protocols = HttpProtocols.Http2;
+							});
 						});
-					});
-
-
+					}
+					
 					webBuilder.UseStartup<Startup>();
 				});
 		}

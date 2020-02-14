@@ -1,14 +1,7 @@
 ﻿using Grpc.Core;
-using Grpc.Core.Logging;
 using kli.NewService.GRPC;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using static kli.NewService.GRPC.CalculationMessage.Types;
 
@@ -22,8 +15,8 @@ namespace kli.legacyTXS
 		public MainForm()
 		{
 			InitializeComponent();
-			this.onPremChannel = new Channel("localhost:5001", ChannelCredentials.Insecure);
-			//this.cloudChannel = new Channel("localhost:5001", ChannelCredentials.Insecure);
+			this.onPremChannel = new Channel($"localhost:{Program.NEWSERVICE_PORT}", ChannelCredentials.Insecure);
+			this.cloudChannel = new Channel("https://kligrpc.azurewebsites.net", ChannelCredentials.Insecure);
 		}
 
 		private async void buttonCalcOnPrem_Click(object sender, EventArgs e)
@@ -51,6 +44,17 @@ namespace kli.legacyTXS
 				Lhs = (double)numericLhs.Value,
 				Rhs = (double)numericRhs.Value
 			};
+		}
+
+		private async void MainForm_Load(object sender, EventArgs e)
+		{
+			await this.onPremChannel.ConnectAsync();
+			this.labelOnPrem.Text = $"{this.onPremChannel.State} - {this.onPremChannel.ResolvedTarget}";
+			this.buttonCalcOnPrem.Enabled = true;
+
+			//await this.cloudChannel.ConnectAsync();
+			//this.labelCloud.Text = $"{this.cloudChannel.State} - {this.cloudChannel.ResolvedTarget}";
+			//this.buttonCalcCloud.Enabled = true;
 		}
 	}
 }

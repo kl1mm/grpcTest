@@ -58,6 +58,7 @@
 			// buttonCalcOnPrem
 			// 
 			this.buttonCalcOnPrem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+			this.buttonCalcOnPrem.Enabled = false;
 			this.buttonCalcOnPrem.Location = new System.Drawing.Point(184, 105);
 			this.buttonCalcOnPrem.Name = "buttonCalcOnPrem";
 			this.buttonCalcOnPrem.Size = new System.Drawing.Size(75, 23);
@@ -220,6 +221,7 @@
 			// buttonCalcCloud
 			// 
 			this.buttonCalcCloud.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+			this.buttonCalcCloud.Enabled = false;
 			this.buttonCalcCloud.Location = new System.Drawing.Point(197, 105);
 			this.buttonCalcCloud.Name = "buttonCalcCloud";
 			this.buttonCalcCloud.Size = new System.Drawing.Size(75, 23);
@@ -265,6 +267,7 @@
 			this.Controls.Add(this.groupBoxCal);
 			this.Name = "MainForm";
 			this.Text = "TXSuite";
+			this.Load += new System.EventHandler(this.MainForm_Load);
 			this.groupBoxOnPrem.ResumeLayout(false);
 			this.groupBoxOnPrem.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.numericLhs)).EndInit();
