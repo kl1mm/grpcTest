@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-option csharp_namespace = "kli.NewService.GRPC";
+option csharp_namespace = "kli.GRPC";
 
 package calculator;
 

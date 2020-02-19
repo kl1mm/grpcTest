@@ -1,34 +1,49 @@
-﻿using System;
-using System.Diagnostics;
-using System.IO;
+﻿using kli.legacyTXS.Configs;
+using kli.legacyTXS.Services;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using System;
 using System.Windows.Forms;
 
 namespace kli.legacyTXS
 {
-	static class Program
+	internal static class Program
 	{
-		public const int NEWSERVICE_PORT = 5001;
+		private static IHost appHost;
 
-		/// <summary>
-		/// The main entry point for the application.
-		/// </summary>
 		[STAThread]
-		static void Main()
+		private static void Main(string[] args)
 		{
-			var startInfo = new ProcessStartInfo
-			{
-				FileName = Path.Combine("Services", "kli.NewService.exe"),
-				Arguments = $"local {NEWSERVICE_PORT}",
-				CreateNoWindow = true,
-				UseShellExecute = false,
-			};
+			appHost = new HostBuilder()
+				.ConfigureAppConfiguration((context, configurationBuilder) =>
+				{
+					configurationBuilder.SetBasePath(context.HostingEnvironment.ContentRootPath);
+					configurationBuilder.AddJsonFile("appsettings.json", optional: false);
+					configurationBuilder.AddEnvironmentVariables();
+					configurationBuilder.AddCommandLine(args);
+				})
+				.ConfigureServices((context, services) =>
+				{
+					services.Configure<ServicesConfig>(context.Configuration,
+						binder => binder.BindNonPublicProperties = true);
 
-			var process = Process.Start(startInfo);
+					services.AddSingleton<MainForm>();
+					services.AddMicroServiceClients();
+				})
+				.Build();
 
-			Application.ApplicationExit += (sender, args) => process.Kill();
+			var hostLifetime = appHost.Services.GetService<IHostApplicationLifetime>();
+			hostLifetime.ApplicationStarted.Register(() => OnApplicationStart(appHost.Services));
+
+			appHost.RunAsync().Wait();
+		}
+
+		private static void OnApplicationStart(IServiceProvider services)
+		{
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
-			Application.Run(new MainForm());
+			Application.Run(services.GetService<MainForm>());
 		}
 	}
 }

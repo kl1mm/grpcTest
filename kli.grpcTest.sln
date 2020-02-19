@@ -3,14 +3,18 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29721.120
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "kli.NewService", "kli.NewService\kli.NewService.csproj", "{6AF8B84B-6455-47F3-8189-4CC8569C6688}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Protos", "Protos", "{35976675-8088-4F8E-A328-584246ECEF64}"
 	ProjectSection(SolutionItems) = preProject
 		Protos\calculator.proto = Protos\calculator.proto
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "kli.legacyTXS", "kli.legacyTXS\kli.legacyTXS.csproj", "{995C404B-6F4D-4DA9-874D-50F5D5B45E14}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "kli.legacyTXS", "kli.legacyTXS\kli.legacyTXS.csproj", "{995C404B-6F4D-4DA9-874D-50F5D5B45E14}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "kli.NewClient", "kli.NewClient\kli.NewClient.csproj", "{D32FDA8F-6251-491A-9F65-D3433CF5B75F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "New", "New", "{4799E767-F47B-45E6-8B85-3DBD630B08D5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "kli.CalculatorService", "kli.Service\kli.CalculatorService.csproj", "{80E64C41-F996-4551-8141-7AC416DAEDFB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -18,17 +22,24 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{6AF8B84B-6455-47F3-8189-4CC8569C6688}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6AF8B84B-6455-47F3-8189-4CC8569C6688}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6AF8B84B-6455-47F3-8189-4CC8569C6688}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6AF8B84B-6455-47F3-8189-4CC8569C6688}.Release|Any CPU.Build.0 = Release|Any CPU
 		{995C404B-6F4D-4DA9-874D-50F5D5B45E14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{995C404B-6F4D-4DA9-874D-50F5D5B45E14}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{995C404B-6F4D-4DA9-874D-50F5D5B45E14}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{995C404B-6F4D-4DA9-874D-50F5D5B45E14}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D32FDA8F-6251-491A-9F65-D3433CF5B75F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D32FDA8F-6251-491A-9F65-D3433CF5B75F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D32FDA8F-6251-491A-9F65-D3433CF5B75F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D32FDA8F-6251-491A-9F65-D3433CF5B75F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{80E64C41-F996-4551-8141-7AC416DAEDFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80E64C41-F996-4551-8141-7AC416DAEDFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80E64C41-F996-4551-8141-7AC416DAEDFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80E64C41-F996-4551-8141-7AC416DAEDFB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D32FDA8F-6251-491A-9F65-D3433CF5B75F} = {4799E767-F47B-45E6-8B85-3DBD630B08D5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AD566C2E-C410-4532-A881-6BFE9B0AFD90}

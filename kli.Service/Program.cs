@@ -1,9 +1,9 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Server.Kestrel.Core;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
-using System.Net;
 
-namespace kli.NewService
+namespace kli.CalculatorService
 {
 	public class Program
 	{
@@ -17,19 +17,16 @@ namespace kli.NewService
 			return Host.CreateDefaultBuilder(args)
 				.ConfigureWebHostDefaults(webBuilder =>
 				{
-					if (args.Length > 0 && args[0] == "local" && int.TryParse(args[1], out var port))
-					{
-						webBuilder.ConfigureKestrel(options =>
-						{
-							options.Listen(IPAddress.Any, port, listenOptions =>
-							{
-								listenOptions.Protocols = HttpProtocols.Http2;
-							});
-						});
-					}
-					
+					webBuilder.ConfigureKestrel(SetupKestrel);
 					webBuilder.UseStartup<Startup>();
 				});
+		}
+
+		private static void SetupKestrel(WebHostBuilderContext ctx, KestrelServerOptions options)
+		{
+			var servicePort = ctx.Configuration.GetValue("servicePort", -1);
+			if (servicePort != -1)
+				options.ListenAnyIP(servicePort, listenOptions => listenOptions.Protocols = HttpProtocols.Http2);
 		}
 	}
 }

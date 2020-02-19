@@ -1,15 +1,25 @@
 ﻿using Grpc.Core;
-using kli.NewService.GRPC;
+using kli.GRPC;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Threading.Tasks;
-using static kli.NewService.GRPC.CalculationMessage.Types;
+using static kli.GRPC.CalculationMessage.Types;
 
-namespace kli.grpcTest.GRPC
+namespace kli.CalculatorService.Grpc
 {
-	public class CalculatorGRPCService : Calculator.CalculatorBase
+	public class CalculatorGrpc : Calculator.CalculatorBase
 	{
+		private readonly ILogger<CalculatorGrpc> logger;
+
+		public CalculatorGrpc(ILogger<CalculatorGrpc> logger)
+		{
+			this.logger = logger;
+		}
+
 		public override Task<CalculationResult> Calc(CalculationMessage request, ServerCallContext context)
 		{
+			this.logger.LogInformation($".NETCore - Service: Ich berechne... für {context.Peer}");
+
 			var value = request.Operand switch
 			{
 				Operand.Plus => request.Lhs + request.Rhs,

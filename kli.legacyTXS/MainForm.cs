@@ -1,36 +1,42 @@
-﻿using Grpc.Core;
-using kli.NewService.GRPC;
+﻿using kli.GRPC;
+using kli.legacyTXS.Microservices;
+using Microsoft.Extensions.Hosting;
 using System;
 using System.Linq;
 using System.Windows.Forms;
-using static kli.NewService.GRPC.CalculationMessage.Types;
+using static kli.GRPC.CalculationMessage.Types;
+using static kli.GRPC.Calculator;
 
 namespace kli.legacyTXS
 {
 	public partial class MainForm : Form
 	{
-		private readonly Channel onPremChannel;
-		private readonly Channel cloudChannel;
+		private readonly IHost apphost;
+		private readonly ServiceClient<CalculatorClient> calculator;
 
-		public MainForm()
+		public MainForm(IHost apphost, ServiceClient<CalculatorClient> calculator)
 		{
-			InitializeComponent();
-			this.onPremChannel = new Channel($"localhost:{Program.NEWSERVICE_PORT}", ChannelCredentials.Insecure);
-			this.cloudChannel = new Channel("https://kligrpc.azurewebsites.net", ChannelCredentials.Insecure);
+			this.InitializeComponent();
+			this.apphost = apphost;
+			this.calculator = calculator;
 		}
 
-		private async void buttonCalcOnPrem_Click(object sender, EventArgs e)
+		private async void buttonCalc_Click(object sender, EventArgs e)
 		{
-			var calculatorClient = new Calculator.CalculatorClient(this.onPremChannel);
-			var result = await calculatorClient.CalcAsync(this.CreateMessage());
-			labelResult.Text = result.Value.ToString("N2");
+			var result = await this.calculator.Client.CalcAsync(this.CreateMessage());
+			this.labelResult.Text = result.Value.ToString("N2");
 		}
 
-		private async void buttonCalcCloud_Click(object sender, EventArgs e)
+		private async void MainForm_Load(object sender, EventArgs e)
 		{
-			var calculatorClient = new Calculator.CalculatorClient(this.cloudChannel);
-			var result = await calculatorClient.CalcAsync(this.CreateMessage());
-			labelResult.Text = result.Value.ToString("N2");
+			await this.calculator.Channel.ConnectAsync().ConfigureAwait(true);
+			labelInfo.Text = $"{this.calculator.Channel.State} - {this.calculator.Channel.ResolvedTarget}";
+			buttonCalc.Enabled = true;
+		}
+
+		private async void MainForm_FormClosed(object sender, FormClosedEventArgs e)
+		{
+			await this.apphost?.StopAsync(TimeSpan.FromSeconds(1));
 		}
 
 		private CalculationMessage CreateMessage()
@@ -41,20 +47,9 @@ namespace kli.legacyTXS
 			return new CalculationMessage
 			{
 				Operand = (Operand)int.Parse(tag),
-				Lhs = (double)numericLhs.Value,
-				Rhs = (double)numericRhs.Value
+				Lhs = (double)this.numericLhs.Value,
+				Rhs = (double)this.numericRhs.Value
 			};
-		}
-
-		private async void MainForm_Load(object sender, EventArgs e)
-		{
-			await this.onPremChannel.ConnectAsync();
-			this.labelOnPrem.Text = $"{this.onPremChannel.State} - {this.onPremChannel.ResolvedTarget}";
-			this.buttonCalcOnPrem.Enabled = true;
-
-			//await this.cloudChannel.ConnectAsync();
-			//this.labelCloud.Text = $"{this.cloudChannel.State} - {this.cloudChannel.ResolvedTarget}";
-			//this.buttonCalcCloud.Enabled = true;
 		}
 	}
 }
