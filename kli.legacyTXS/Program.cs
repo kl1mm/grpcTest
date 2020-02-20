@@ -20,7 +20,6 @@ namespace kli.legacyTXS
 				{
 					configurationBuilder.SetBasePath(context.HostingEnvironment.ContentRootPath);
 					configurationBuilder.AddJsonFile("appsettings.json", optional: false);
-					configurationBuilder.AddEnvironmentVariables();
 					configurationBuilder.AddCommandLine(args);
 				})
 				.ConfigureServices((context, services) =>
@@ -29,7 +28,7 @@ namespace kli.legacyTXS
 						binder => binder.BindNonPublicProperties = true);
 
 					services.AddSingleton<MainForm>();
-					services.AddMicroServiceClients();
+					services.AddServiceClients();
 				})
 				.Build();
 

@@ -36,4 +36,8 @@
 		<Protobuf Include="..\Protos\calculator.proto" GrpcServices="Client" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Folder Include="Properties\" />
+	</ItemGroup>
+
 </Project>

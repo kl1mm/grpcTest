@@ -12,7 +12,7 @@ namespace kli.legacyTXS.Services
 {
 	internal static class MicroServiceExtensions
 	{
-		public static IServiceCollection AddMicroServiceClients(this IServiceCollection services)
+		public static IServiceCollection AddServiceClients(this IServiceCollection services)
 		{
 			return services
 				.AddHostedService<OnPremiseServiceManager>()

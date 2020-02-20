@@ -2,11 +2,14 @@
 
 	<PropertyGroup>
 		<TargetFramework>netcoreapp3.1</TargetFramework>
+		<UserSecretsId>f5485385-3496-4403-ace6-75bcc5d9bfef</UserSecretsId>
+		<DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
 	</PropertyGroup>
 
 	<ItemGroup>
 		<PackageReference Include="Grpc.AspNetCore" Version="2.27.0" />
 		<PackageReference Include="Grpc.AspNetCore.Web" Version="2.27.0-pre1" />
+		<PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.8" />
 	</ItemGroup>
 
 	<ItemGroup>
