@@ -35,10 +35,11 @@
 			this.rbMultipy = new System.Windows.Forms.RadioButton();
 			this.rbMinus = new System.Windows.Forms.RadioButton();
 			this.groupBoxCal = new System.Windows.Forms.GroupBox();
+			this.labelInfo = new System.Windows.Forms.Label();
 			this.label1 = new System.Windows.Forms.Label();
 			this.labelResult = new System.Windows.Forms.Label();
 			this.numericRhs = new System.Windows.Forms.NumericUpDown();
-			this.labelInfo = new System.Windows.Forms.Label();
+			this.buttonFail = new System.Windows.Forms.Button();
 			((System.ComponentModel.ISupportInitialize)(this.numericLhs)).BeginInit();
 			this.groupBoxCal.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.numericRhs)).BeginInit();
@@ -121,6 +122,7 @@
 			// 
 			// groupBoxCal
 			// 
+			this.groupBoxCal.Controls.Add(this.buttonFail);
 			this.groupBoxCal.Controls.Add(this.labelInfo);
 			this.groupBoxCal.Controls.Add(this.label1);
 			this.groupBoxCal.Controls.Add(this.buttonCalc);
@@ -139,6 +141,14 @@
 			this.groupBoxCal.TabIndex = 12;
 			this.groupBoxCal.TabStop = false;
 			this.groupBoxCal.Text = "Calculator";
+			// 
+			// labelInfo
+			// 
+			this.labelInfo.AutoSize = true;
+			this.labelInfo.Location = new System.Drawing.Point(12, 59);
+			this.labelInfo.Name = "labelInfo";
+			this.labelInfo.Size = new System.Drawing.Size(0, 13);
+			this.labelInfo.TabIndex = 15;
 			// 
 			// label1
 			// 
@@ -176,13 +186,16 @@
             0,
             0});
 			// 
-			// labelInfo
+			// buttonFail
 			// 
-			this.labelInfo.AutoSize = true;
-			this.labelInfo.Location = new System.Drawing.Point(12, 59);
-			this.labelInfo.Name = "labelInfo";
-			this.labelInfo.Size = new System.Drawing.Size(0, 13);
-			this.labelInfo.TabIndex = 15;
+			this.buttonFail.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.buttonFail.Location = new System.Drawing.Point(337, 54);
+			this.buttonFail.Name = "buttonFail";
+			this.buttonFail.Size = new System.Drawing.Size(71, 23);
+			this.buttonFail.TabIndex = 16;
+			this.buttonFail.Text = "FAIL";
+			this.buttonFail.UseVisualStyleBackColor = true;
+			this.buttonFail.Click += new System.EventHandler(this.buttonFail_Click);
 			// 
 			// MainForm
 			// 
@@ -216,6 +229,7 @@
 		private System.Windows.Forms.NumericUpDown numericRhs;
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.Label labelInfo;
+		private System.Windows.Forms.Button buttonFail;
 	}
 }
 

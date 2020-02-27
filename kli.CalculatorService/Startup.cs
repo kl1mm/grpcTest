@@ -1,6 +1,4 @@
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using kli.CalculatorService.Grpc;
 
@@ -10,19 +8,18 @@ namespace kli.CalculatorService
 	{
 		public void ConfigureServices(IServiceCollection services)
 		{
-			services.AddGrpc();
+			services.AddGrpc(options =>
+            {
+                options.Interceptors.Add<GrpcLoggerInterceptor>();
+            });
 		}
 
-		public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+		public void Configure(IApplicationBuilder app)
 		{
 			app.UseRouting();
 			app.UseEndpoints(endpoints =>
 			{
 				endpoints.MapGrpcService<CalculatorGrpc>();
-				endpoints.Map("/", ctx =>
-				{
-					return ctx.Response.WriteAsync("Hello from Calculator UI");
-				});
 			});
 		}
 	}

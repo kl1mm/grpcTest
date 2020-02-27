@@ -1,4 +1,5 @@
-﻿using Grpc.Core;
+﻿using Google.Protobuf.WellKnownTypes;
+using Grpc.Core;
 using kli.GRPC;
 using Microsoft.Extensions.Logging;
 using System;
@@ -18,8 +19,8 @@ namespace kli.CalculatorService.Grpc
 
 		public override Task<CalculationResult> Calc(CalculationMessage request, ServerCallContext context)
 		{
-			this.logger.LogInformation($".NETCore - Service: Ich berechne... für {context.Peer}");
-
+			this.logger.LogInformation($"Berechne: {request.Lhs} {request.Operand.ToString().ToUpperInvariant()} {request.Rhs}");
+			
 			var value = request.Operand switch
 			{
 				Operand.Plus => request.Lhs + request.Rhs,
@@ -29,7 +30,12 @@ namespace kli.CalculatorService.Grpc
 				_ => throw new NotSupportedException($"{nameof(request.Operand)} '{request.Operand}' is unknown"),
 			};
 
+			this.logger.LogInformation($"Ergebnis: {value}");
+
 			return Task.FromResult(new CalculationResult { Value = value });
 		}
+
+		public override Task<Empty> Fail(Empty request, ServerCallContext context) 
+			=> throw new RpcException(new Status(StatusCode.Internal, "Da ist was schiefgelaufen"));
 	}
 }

@@ -1,4 +1,5 @@
-﻿using kli.legacyTXS.Configs;
+﻿using Grpc.Core;
+using kli.legacyTXS.Configs;
 using kli.legacyTXS.Services;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -40,6 +41,11 @@ namespace kli.legacyTXS
 
 		private static void OnApplicationStart(IServiceProvider services)
 		{
+			Application.ThreadException += (s, args) => {
+				if(args.Exception is RpcException e)
+					MessageBox.Show(e.Status.Detail, e.StatusCode.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+			};
+
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
 			Application.Run(services.GetService<MainForm>());

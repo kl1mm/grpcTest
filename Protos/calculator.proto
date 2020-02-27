@@ -1,11 +1,12 @@
 syntax = "proto3";
-
 option csharp_namespace = "kli.GRPC";
 
+import "google/protobuf/empty.proto";
 package calculator;
 
 service Calculator {
   rpc Calc (CalculationMessage) returns (CalculationResult);
+  rpc Fail (google.protobuf.Empty) returns (google.protobuf.Empty);
 }
 
 message CalculationMessage {

@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Linq;
 
-namespace kli.legacyTXS.Configs
-{
+namespace kli.legacyTXS.Configs 
+	{ 
+
 	public class ServicesConfig
 	{
 		public const string Key = "services";

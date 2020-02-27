@@ -24,7 +24,7 @@ namespace kli.CalculatorService
 
 		private static void SetupKestrel(WebHostBuilderContext ctx, KestrelServerOptions options)
 		{
-			var servicePort = ctx.Configuration.GetValue("servicePort", -1);
+			var servicePort = ctx.Configuration.GetValue("servicePort", 5555);
 			if (servicePort != -1)
 				options.ListenAnyIP(servicePort, listenOptions => listenOptions.Protocols = HttpProtocols.Http2);
 		}

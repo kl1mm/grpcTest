@@ -1,4 +1,5 @@
-﻿using kli.GRPC;
+﻿using Google.Protobuf.WellKnownTypes;
+using kli.GRPC;
 using kli.legacyTXS.Microservices;
 using Microsoft.Extensions.Hosting;
 using System;
@@ -50,6 +51,11 @@ namespace kli.legacyTXS
 				Lhs = (double)this.numericLhs.Value,
 				Rhs = (double)this.numericRhs.Value
 			};
+		}
+
+		private async void buttonFail_Click(object sender, EventArgs e)
+		{
+			await this.calculator.Client.FailAsync(new Empty());
 		}
 	}
 }

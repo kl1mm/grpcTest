@@ -2,7 +2,6 @@
 
 	<PropertyGroup>
 		<TargetFramework>netcoreapp3.1</TargetFramework>
-		<UserSecretsId>f5485385-3496-4403-ace6-75bcc5d9bfef</UserSecretsId>
 		<DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
 	</PropertyGroup>
 
@@ -15,5 +14,9 @@
 	<ItemGroup>
 		<Protobuf Include="..\Protos\calculator.proto" GrpcServices="Server" />
 	</ItemGroup>
+
+	<PropertyGroup>
+		<DockerfileRunArguments>-p 3333:3333</DockerfileRunArguments>
+	</PropertyGroup>
 
 </Project>

@@ -13,15 +13,15 @@ namespace kli.NewClient
 		{
 			//var channel = GrpcChannel.ForAddress("https://kligrpc.azurewebsites.net", new GrpcChannelOptions
 			
-			var handler = new GrpcWebHandler(GrpcWebMode.GrpcWebText, new HttpClientHandler());
-			var channel = GrpcChannel.ForAddress("https://kligrpc.azurewebsites.net", new GrpcChannelOptions
-			{
-				HttpClient = new HttpClient(handler)
-			});
+			//var handler = new GrpcWebHandler(GrpcWebMode.GrpcWebText, new HttpClientHandler());
+			//var channel = GrpcChannel.ForAddress("https://kligrpc.azurewebsites.net", new GrpcChannelOptions
+			//{
+			//	HttpClient = new HttpClient(handler)
+			//});
 
-			var client = new Calculator.CalculatorClient(channel);
-			Console.WriteLine(client.Calc(new CalculationMessage { Operand = Operand.Multipy, Lhs = 13, Rhs = 20 }));
-			Console.ReadLine();
+			//var client = new Calculator.CalculatorClient(channel);
+			//Console.WriteLine(client.Calc(new CalculationMessage { Operand = Operand.Multipy, Lhs = 13, Rhs = 20 }));
+			//Console.ReadLine();
 
 			//var channel = GrpcChannel.ForAddress("http://10.0.75.1:5001/");
 			//var channel = GrpcChannel.ForAddress("https://10.10.103.150:5001/");
@@ -33,9 +33,9 @@ namespace kli.NewClient
 			//httpClientHandler.ServerCertificateCustomValidationCallback = HttpClientHandler.DangerousAcceptAnyServerCertificateValidator;
 			//var httpClient = new HttpClient(httpClientHandler);
 
-			//var channel = GrpcChannel.ForAddress("https://localhost:5001");
-			//var calculatorClient = new Calculator.CalculatorClient(channel);
-			//Console.WriteLine(calculatorClient.Calc(new CalculationMessage { Lhs = 13, Rhs = 42, Operand = CalculationMessage.Types.Operand.Plus }));
+			var channel = GrpcChannel.ForAddress("http://localhost:3333");
+			var calculatorClient = new Calculator.CalculatorClient(channel);
+			Console.WriteLine(calculatorClient.Calc(new CalculationMessage { Lhs = 13, Rhs = 42, Operand = Operand.Plus }));
 		}
 	}
 }

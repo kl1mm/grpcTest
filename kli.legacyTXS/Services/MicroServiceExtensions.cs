@@ -1,4 +1,5 @@
 ﻿using Grpc.Core;
+using Grpc.Core.Interceptors;
 using kli.GRPC;
 using kli.legacyTXS.Configs;
 using kli.legacyTXS.Microservices;
@@ -30,6 +31,7 @@ namespace kli.legacyTXS.Services
 					channelFacotry = new CloudChannelFactory();
 
 				var channel = channelFacotry.Create(config.Endpoint, config.TlsPublicKeyFile);
+			
 
 				var client = typeof(TClient).CreateInstance<TClient>(channel);
 				return new ServiceClient<TClient>(client, channel);
