@@ -45,7 +45,6 @@ namespace kli.NewClient
 		{
 			try
 			{
-				
 				var client = new Calculator.CalculatorClient(channel);
 				Console.WriteLine(msg + " " + client.Calc(new CalculationMessage { Lhs = 13, Rhs = 42, Operand = Operand.Plus }));
 			}

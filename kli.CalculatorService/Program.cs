@@ -24,15 +24,15 @@ namespace kli.CalculatorService
 
 		private static void SetupKestrel(WebHostBuilderContext ctx, KestrelServerOptions options)
 		{
-			var servicePort = ctx.Configuration.GetValue("servicePort", 443);
-			if (servicePort != -1)
+			const int defaultPort = 443;
+			var servicePort = ctx.Configuration.GetValue("servicePort", 4444);
+
+			options.ListenAnyIP(servicePort, listenOptions =>
 			{
-				options.ListenAnyIP(servicePort, listenOptions =>
-				{
-					listenOptions.Protocols = HttpProtocols.Http2;
+				listenOptions.Protocols = HttpProtocols.Http2;
+				if (servicePort == defaultPort)
 					listenOptions.UseHttps("calculatorCert.pfx", "calc123");
-				});
-			}
+			});
 		}
 	}
 }
