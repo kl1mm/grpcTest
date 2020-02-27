@@ -15,8 +15,15 @@
 		<Protobuf Include="..\Protos\calculator.proto" GrpcServices="Server" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <None Update="calculatorCert.pfx">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	    <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+	  </None>
+	</ItemGroup>
+
 	<PropertyGroup>
-		<DockerfileRunArguments>-p 3333:3333</DockerfileRunArguments>
+		<DockerfileRunArguments>-p 443:443</DockerfileRunArguments>
 	</PropertyGroup>
 
 </Project>

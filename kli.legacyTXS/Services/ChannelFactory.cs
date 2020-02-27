@@ -1,4 +1,5 @@
 ﻿using Grpc.Core;
+using System.IO;
 
 namespace kli.legacyTXS.Services
 {
@@ -19,7 +20,8 @@ namespace kli.legacyTXS.Services
 		{
 			//"WS037405.agensgruppe.local:5555"; certificate.pem 
 			//return new Channel(target, new SslCredentials(File.ReadAllText(publicKeyFile))); 
-			return new Channel(target, ChannelCredentials.Insecure);
+			return new Channel(target, new SslCredentials(File.ReadAllText(publicKeyFilePath)));
+			//return new Channel(target, SslCredentials.Insecure);
 		}
 	}
 }

@@ -9,13 +9,20 @@
 		<PackageReference Include="Grpc.Net.Client" Version="2.27.0" />
 		<PackageReference Include="Grpc.Net.Client.Web" Version="2.27.0-pre1" />
 		<PackageReference Include="Grpc.Tools" Version="2.27.0" />
+		<PackageReference Include="Grpc.Core" Version="2.27.0" />
 		<PackageReference Include="Google.Protobuf" Version="3.11.3" />
 	</ItemGroup>
 
 	<ItemGroup>
-				<Protobuf Include="..\Protos\greet.proto" GrpcServices="Client" />
+		<Protobuf Include="..\Protos\greet.proto" GrpcServices="Client" />
 
 		<Protobuf Include="..\Protos\calculator.proto" GrpcServices="Client" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Update="publicCert.pem">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
 	</ItemGroup>
 
 

@@ -8,28 +8,28 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <None Remove="appsettings.json" />
+		<None Remove="appsettings.json" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Content Include="appsettings.json">
-	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	    <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-	    <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-	  </Content>
+		<Content Include="appsettings.json">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+			<ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+			<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+		</Content>
 	</ItemGroup>
 
 	<ItemGroup>
-	  <PackageReference Include="Google.Protobuf" Version="3.11.4" />
-	  <PackageReference Include="Grpc.Auth" Version="2.27.0" />
-	  <PackageReference Include="Grpc.Core" Version="2.27.0" />
-	  <PackageReference Include="Grpc.Tools" Version="2.27.0">
-	    <PrivateAssets>all</PrivateAssets>
-	    <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-	  </PackageReference>
-	  <PackageReference Include="Microsoft.Extensions.Hosting" Version="3.1.1" />
-	  <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="3.1.2" />
-	  <PackageReference Include="TXS.Shared" Version="0.6.0.48" />
+		<PackageReference Include="Google.Protobuf" Version="3.11.4" />
+		<PackageReference Include="Grpc.Auth" Version="2.27.0" />
+		<PackageReference Include="Grpc.Core" Version="2.27.0" />
+		<PackageReference Include="Grpc.Tools" Version="2.27.0">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Microsoft.Extensions.Hosting" Version="3.1.1" />
+		<PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="3.1.2" />
+		<PackageReference Include="TXS.Shared" Version="0.6.0.48" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -37,8 +37,14 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Grpc\" />
-	  <Folder Include="Properties\" />
+		<Folder Include="Grpc\" />
+		<Folder Include="Properties\" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Update="publicCert.pem">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
 	</ItemGroup>
 
 </Project>
