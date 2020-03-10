@@ -6,6 +6,7 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Protos", "Protos", "{35976675-8088-4F8E-A328-584246ECEF64}"
 	ProjectSection(SolutionItems) = preProject
 		Protos\calculator.proto = Protos\calculator.proto
+		Protos\stream.proto = Protos\stream.proto
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "kli.legacyTXS", "kli.legacyTXS\kli.legacyTXS.csproj", "{995C404B-6F4D-4DA9-874D-50F5D5B45E14}"
@@ -15,6 +16,14 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "New", "New", "{4799E767-F47B-45E6-8B85-3DBD630B08D5}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "kli.CalculatorService", "kli.CalculatorService\kli.CalculatorService.csproj", "{80E64C41-F996-4551-8141-7AC416DAEDFB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Streaming", "Streaming", "{ABF5E858-7F6E-4AD7-94B3-6ADDDE6EB956}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "legacy", "legacy", "{01DBADD2-43D1-45E8-B783-A4DC9C6559B0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "kli.StreamServer", "kli.StreamServer\kli.StreamServer.csproj", "{7AC2BC93-4173-4D14-AF3D-0417AB2B3DB1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "kli.StreamClient", "kli.StreamClient\kli.StreamClient.csproj", "{2E7ED6C4-163C-411B-81A6-B6B2DAB58276}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -34,12 +43,23 @@ Global
 		{80E64C41-F996-4551-8141-7AC416DAEDFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{80E64C41-F996-4551-8141-7AC416DAEDFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{80E64C41-F996-4551-8141-7AC416DAEDFB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7AC2BC93-4173-4D14-AF3D-0417AB2B3DB1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7AC2BC93-4173-4D14-AF3D-0417AB2B3DB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7AC2BC93-4173-4D14-AF3D-0417AB2B3DB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7AC2BC93-4173-4D14-AF3D-0417AB2B3DB1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2E7ED6C4-163C-411B-81A6-B6B2DAB58276}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E7ED6C4-163C-411B-81A6-B6B2DAB58276}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E7ED6C4-163C-411B-81A6-B6B2DAB58276}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E7ED6C4-163C-411B-81A6-B6B2DAB58276}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
+		{995C404B-6F4D-4DA9-874D-50F5D5B45E14} = {01DBADD2-43D1-45E8-B783-A4DC9C6559B0}
 		{D32FDA8F-6251-491A-9F65-D3433CF5B75F} = {4799E767-F47B-45E6-8B85-3DBD630B08D5}
+		{7AC2BC93-4173-4D14-AF3D-0417AB2B3DB1} = {ABF5E858-7F6E-4AD7-94B3-6ADDDE6EB956}
+		{2E7ED6C4-163C-411B-81A6-B6B2DAB58276} = {ABF5E858-7F6E-4AD7-94B3-6ADDDE6EB956}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AD566C2E-C410-4532-A881-6BFE9B0AFD90}

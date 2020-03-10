@@ -1,0 +1,17 @@
+syntax = "proto3";
+option csharp_namespace = "kli.GRPC";
+import "google/protobuf/empty.proto";
+
+package stream;
+
+service DataTransmitter {
+  rpc Transmit (stream DataRequest) returns (DataReply);
+}
+
+message DataRequest {
+  string data = 1;
+}
+
+message DataReply {
+  string reply = 1;
+}

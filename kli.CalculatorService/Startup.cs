@@ -8,6 +8,8 @@ namespace kli.CalculatorService
 	{
 		public void ConfigureServices(IServiceCollection services)
 		{
+			services.AddAntiforgery();
+
 			services.AddGrpc(options =>
             {
                 options.Interceptors.Add<GrpcLoggerInterceptor>();
