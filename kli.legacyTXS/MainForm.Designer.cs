@@ -35,11 +35,11 @@
 			this.rbMultipy = new System.Windows.Forms.RadioButton();
 			this.rbMinus = new System.Windows.Forms.RadioButton();
 			this.groupBoxCal = new System.Windows.Forms.GroupBox();
+			this.buttonFail = new System.Windows.Forms.Button();
 			this.labelInfo = new System.Windows.Forms.Label();
 			this.label1 = new System.Windows.Forms.Label();
 			this.labelResult = new System.Windows.Forms.Label();
 			this.numericRhs = new System.Windows.Forms.NumericUpDown();
-			this.buttonFail = new System.Windows.Forms.Button();
 			((System.ComponentModel.ISupportInitialize)(this.numericLhs)).BeginInit();
 			this.groupBoxCal.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.numericRhs)).BeginInit();
@@ -142,6 +142,18 @@
 			this.groupBoxCal.TabStop = false;
 			this.groupBoxCal.Text = "Calculator";
 			// 
+			// buttonFail
+			// 
+			this.buttonFail.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.buttonFail.Enabled = false;
+			this.buttonFail.Location = new System.Drawing.Point(337, 54);
+			this.buttonFail.Name = "buttonFail";
+			this.buttonFail.Size = new System.Drawing.Size(71, 23);
+			this.buttonFail.TabIndex = 16;
+			this.buttonFail.Text = "FAIL";
+			this.buttonFail.UseVisualStyleBackColor = true;
+			this.buttonFail.Click += new System.EventHandler(this.buttonFail_Click);
+			// 
 			// labelInfo
 			// 
 			this.labelInfo.AutoSize = true;
@@ -185,17 +197,6 @@
             0,
             0,
             0});
-			// 
-			// buttonFail
-			// 
-			this.buttonFail.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.buttonFail.Location = new System.Drawing.Point(337, 54);
-			this.buttonFail.Name = "buttonFail";
-			this.buttonFail.Size = new System.Drawing.Size(71, 23);
-			this.buttonFail.TabIndex = 16;
-			this.buttonFail.Text = "FAIL";
-			this.buttonFail.UseVisualStyleBackColor = true;
-			this.buttonFail.Click += new System.EventHandler(this.buttonFail_Click);
 			// 
 			// MainForm
 			// 

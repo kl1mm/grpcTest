@@ -16,13 +16,7 @@ namespace kli.legacyTXS
 		[STAThread]
 		private static void Main(string[] args)
 		{
-			appHost = new HostBuilder()
-				.ConfigureAppConfiguration((context, configurationBuilder) =>
-				{
-					configurationBuilder.SetBasePath(context.HostingEnvironment.ContentRootPath);
-					configurationBuilder.AddJsonFile("appsettings.json", optional: false);
-					configurationBuilder.AddCommandLine(args);
-				})
+			appHost = Host.CreateDefaultBuilder(args)
 				.ConfigureServices((context, services) =>
 				{
 					services.Configure<ServicesConfig>(context.Configuration,

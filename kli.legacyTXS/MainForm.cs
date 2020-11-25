@@ -33,6 +33,7 @@ namespace kli.legacyTXS
 			await this.calculator.Channel.ConnectAsync().ConfigureAwait(true);
 			labelInfo.Text = $"{this.calculator.Channel.State} - {this.calculator.Channel.ResolvedTarget}";
 			buttonCalc.Enabled = true;
+			buttonFail.Enabled = true;
 		}
 
 		private async void MainForm_FormClosed(object sender, FormClosedEventArgs e)

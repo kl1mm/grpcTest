@@ -26,8 +26,9 @@ namespace kli.legacyTXS.Services
 			return services.AddSingleton(sp =>
 			{
 				var config = sp.GetService<IOptions<ServicesConfig>>().Value.GetServiceConfig(nameof(Calculator));
+				
 				IChannelFactory channelFacotry = new OnPremiseChannelFactory();
-				if (string.IsNullOrWhiteSpace(config.Startup))
+				if (string.IsNullOrWhiteSpace(config.Startup) && !string.IsNullOrWhiteSpace(config.TlsPublicKeyFile))
 					channelFacotry = new CloudChannelFactory();
 
 				var channel = channelFacotry.Create(config.Endpoint, config.TlsPublicKeyFile);

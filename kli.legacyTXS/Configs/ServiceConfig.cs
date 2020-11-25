@@ -11,13 +11,13 @@ namespace kli.legacyTXS.Configs
 
 		public Service GetServiceConfig(string serviceName)
 		{
-			return Services.FirstOrDefault(s => s.ApiPackage.Equals(serviceName, StringComparison.OrdinalIgnoreCase)) 
+			return Services.FirstOrDefault(s => s.Module.Equals(serviceName, StringComparison.OrdinalIgnoreCase)) 
 				?? throw new ArgumentOutOfRangeException();
 		}
 
 		public class Service
 		{
-			public string ApiPackage { get; private set; }
+			public string Module { get; private set; }
 			public string Startup { get; private set; }
 			public string Endpoint { get; private set; }
 			public string TlsPublicKeyFile { get; private set; }

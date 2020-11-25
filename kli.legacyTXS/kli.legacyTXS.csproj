@@ -1,15 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
 
 	<PropertyGroup>
-		<TargetFramework>net461</TargetFramework>
+		<TargetFramework>net48</TargetFramework>
 		<OutputType>WinExe</OutputType>
 		<UseWindowsForms>true</UseWindowsForms>
-		<UserSecretsId>030ddb14-997c-4fd8-92f0-2cbb7d4472b0</UserSecretsId>
 	</PropertyGroup>
-
-	<ItemGroup>
-		<None Remove="appsettings.json" />
-	</ItemGroup>
 
 	<ItemGroup>
 		<Content Include="appsettings.json">
@@ -20,24 +15,20 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Google.Protobuf" Version="3.11.4" />
-		<PackageReference Include="Grpc.Auth" Version="2.27.0" />
-		<PackageReference Include="Grpc.Core" Version="2.27.0" />
-		<PackageReference Include="Grpc.Tools" Version="2.27.0">
+		<PackageReference Include="Google.Protobuf" Version="3.14.0" />
+		<PackageReference Include="Grpc.Auth" Version="2.33.1" />
+		<PackageReference Include="Grpc.Core" Version="2.33.1" />
+		<PackageReference Include="Grpc.Tools" Version="2.33.1">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
-		<PackageReference Include="Microsoft.Extensions.Hosting" Version="3.1.1" />
-		<PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="3.1.2" />
+		<PackageReference Include="Microsoft.Extensions.Hosting" Version="5.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="5.0.0" />
 		<PackageReference Include="TXS.Shared" Version="0.6.0.48" />
 	</ItemGroup>
 
 	<ItemGroup>
 		<Protobuf Include="..\Protos\calculator.proto" GrpcServices="Client" />
-	</ItemGroup>
-
-	<ItemGroup>
-		<Folder Include="Properties\" />
 	</ItemGroup>
 
 	<ItemGroup>
